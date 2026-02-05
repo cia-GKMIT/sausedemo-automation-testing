@@ -21,14 +21,6 @@ test.describe('SauceDemo Bug Validation Suite', () => {
     await expect(page).not.toHaveURL(process.env.BASE_URL);
   });
 
-  test('Validate product description rendering on inventory page', async ({ page }) => {
-    const inventoryPage = new InventoryPage(page);
-
-    await expect(inventoryPage.inventoryItems).toHaveCount(6);
-
-    await expect(inventoryPage.productDescriptions).not.toContainText('<');
-    await expect(inventoryPage.productDescriptions).not.toContainText('>');
-  });
 
   test('Validate product sorting persistence after page refresh', async ({ page }) => {
     const inventoryPage = new InventoryPage(page);
@@ -73,7 +65,7 @@ test('Validate cart reset updates Add to Cart button state', async ({ page }) =>
     await expect(productDescriptions).not.toContainText('<');
     await expect(productDescriptions).not.toContainText('>');
   });
-  
+
 test('Validate Privacy Policy navigation from footer', async ({ page }) => {
   const privacyLink = page.locator('text=Privacy Policy');
 
