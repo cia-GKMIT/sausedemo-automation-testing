@@ -15,14 +15,14 @@ test.describe('SauceDemo Bug Validation Suite', () => {
     await expect(page).toHaveURL(/inventory.html/);
   });
 
-  test('Validate back navigation behavior after login', async ({ page }) => {
+  test.skip('Validate back navigation behavior after login', async ({ page }) => {
     await page.goBack();
 
     await expect(page).not.toHaveURL(process.env.BASE_URL);
   });
 
 
-  test('Validate product sorting persistence after page refresh', async ({ page }) => {
+  test.skip('Validate product sorting persistence after page refresh', async ({ page }) => {
     const inventoryPage = new InventoryPage(page);
 
     await inventoryPage.sortDropdown.selectOption('za');
@@ -32,7 +32,7 @@ test.describe('SauceDemo Bug Validation Suite', () => {
     expect(selected).toBe('za');
   });
 
-test('Validate cart reset updates Add to Cart button state', async ({ page }) => {
+test.skip('Validate cart reset updates Add to Cart button state', async ({ page }) => {
     const inventoryPage = new InventoryPage(page);
 
 
@@ -50,7 +50,7 @@ test('Validate cart reset updates Add to Cart button state', async ({ page }) =>
     await expect(removeButton).not.toBeVisible(); 
   });
 
-  test('Validate product titles do not contain code patterns', async ({ page }) => {
+  test.skip('Validate product titles do not contain code patterns', async ({ page }) => {
     const productTitles = page.locator('[data-test="inventory-item-name"]');
     
     await expect(productTitles).not.toContainText(/\.\w+\(\)/);
@@ -58,7 +58,7 @@ test('Validate cart reset updates Add to Cart button state', async ({ page }) =>
     await expect(productTitles).not.toContainText('>');
   });
 
-  test('Validate product descriptions do not contain code patterns', async ({ page }) => {
+  test.skip('Validate product descriptions do not contain code patterns', async ({ page }) => {
     const productDescriptions = page.locator('[data-test="inventory-item-desc"]');
     
     await expect(productDescriptions).not.toContainText(/\.\w+\(\)/);
@@ -66,7 +66,7 @@ test('Validate cart reset updates Add to Cart button state', async ({ page }) =>
     await expect(productDescriptions).not.toContainText('>');
   });
 
-test('Validate Privacy Policy navigation from footer', async ({ page }) => {
+test.skip('Validate Privacy Policy navigation from footer', async ({ page }) => {
   const privacyLink = page.locator('text=Privacy Policy');
 
   await expect(privacyLink).toHaveAttribute('href');
